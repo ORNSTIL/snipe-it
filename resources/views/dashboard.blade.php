@@ -26,6 +26,21 @@
 </div>
 @endif
 
+<!-- New tab for Purchase Orders -->
+<div class="col-lg-2 col-xs-6">
+    <a href="{{ route('purchase_orders.create') }}">
+        <div class="small-box bg-blue">
+            <div class="inner">
+                <h3>0</h3> <!-- You can display the number of existing purchase orders here if needed -->
+                <p>{{ strtolower(trans('general.purchase_orders')) }}</p>
+            </div>
+            <div class="icon" aria-hidden="true">
+                <i class="fas fa-file-alt"></i>
+            </div>
+        </div>
+    </a>
+</div><!-- ./col -->
+
 <div class="row">
   <!-- panel -->
   <div class="col-lg-2 col-xs-6">
@@ -404,7 +419,40 @@
 
 @endif
 
-
+<!-- Purchase Order Creation Form -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h2 class="box-title">Create a New Purchase Order</h2>
+            </div>
+            <div class="box-body">
+                <form action="{{ route('purchase_orders.store') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date:</label>
+                        <input type="date" name="date" id="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="order_number">Order Number:</label>
+                        <input type="text" name="order_number" id="order_number" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="purchase_amount">Purchase Amount:</label>
+                        <input type="number" name="purchase_amount" id="purchase_amount" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Purchase Order Creation Form -->
+          
 @stop
 
 @section('moar_scripts')
